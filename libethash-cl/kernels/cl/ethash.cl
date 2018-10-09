@@ -15,6 +15,34 @@
 // You should have received a copy of the GNU General Public License
 // along with Gateless Gate Sharp.  If not, see <http://www.gnu.org/licenses/>.
 
+/*
+  (C)TAO.Foundation for TETHASHV1 modification. GPL V3 License term.
+  https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function#FNV-1_hash
+
+  FNV_hash0 is depricated
+  use FNV1 hash
+
+use hash offset
+FNV-1a hash
+The FNV-1a hash differs from the FNV-1 hash by only the order in which the multiply and XOR is performed:[8][10]
+
+   hash = FNV_offset_basis
+   for each byte_of_data to be hashed
+   	hash = hash XOR byte_of_data
+   	hash = hash × FNV_prime
+   return hash
+
+Size in bits
+{\displaystyle n=2^{s}} {\displaystyle n=2^{s}}
+
+FNV prime	FNV offset basis
+32	224 + 28 + 0x93 = 16777619
+
+2166136261 = 0x811c9dc5
+*/
+
+#define __TETHASHV1__
+#undef __ETHASH__
 
 
 #if (defined(__Tahiti__) || defined(__Pitcairn__) || defined(__Capeverde__) || defined(__Oland__) || defined(__Hainan__))
@@ -39,6 +67,16 @@ uint amd_bitalign(uint src0, uint src1, uint src2)
 #endif
 
 #define FNV_PRIME 0x01000193U
+#define FNV_OFFSET_BASIS  0x811c9dc5U
+
+#ifdef __ETHASH__
+#define fnv(x, y)        ((x) * FNV_PRIME ^ (y))
+#define fnv_reduce(v)    fnv(fnv(fnv(v.x, v.y), v.z), v.w)
+#else  // default __TETHASHV1__ 
+#define fnv(x, y)         ((((FNV_OFFSET_BASIS^(x))*FNV_PRIME) ^ (y)) * FNV_PRIME)
+#define fnv_reduce(v) fnv(fnv(fnv(v.x, v.y), v.z), v.w)
+#endif
+
 
 static __constant uint2 const Keccak_f1600_RC[24] = {
     (uint2)(0x00000001, 0x00000000),
@@ -170,10 +208,6 @@ static __constant uint2 const Keccak_f1600_RC[24] = {
             KECCAKF_1600_RND(st, r, os); \
     } \
 } while(0)
-
-
-#define fnv(x, y)        ((x) * FNV_PRIME ^ (y))
-#define fnv_reduce(v)    fnv(fnv(fnv(v.x, v.y), v.z), v.w)
 
 typedef union {
     uint uints[128 / sizeof(uint)];

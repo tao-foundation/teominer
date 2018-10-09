@@ -4,7 +4,7 @@
 
 #include <mongoose/mongoose.h>
 
-#include "ethminer/buildinfo.h"
+#include "teominer/buildinfo.h"
 #include "httpServer.h"
 #include "libdevcore/Common.h"
 #include "libdevcore/Log.h"
@@ -28,7 +28,7 @@ void httpServer::tableHeader(stringstream& ss, unsigned columns)
           "<meta http-equiv=refresh content=30></head><body><table width=\"50%\" border=1 "
           "cellpadding=2 cellspacing=0 align=center>"
           "<tr valign=top align=center style=background-color:Gold><th colspan="
-       << columns << ">" << ethminer_get_buildinfo()->project_name_with_version << " on "
+       << columns << ">" << teominer_get_buildinfo()->project_name_with_version << " on "
        << hostName << " - " << l << "</th></tr>";
 }
 

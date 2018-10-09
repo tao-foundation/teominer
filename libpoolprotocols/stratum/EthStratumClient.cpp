@@ -1,4 +1,4 @@
-#include <ethminer/buildinfo.h>
+#include <teominer/buildinfo.h>
 #include <libdevcore/Log.h>
 #include <ethash/ethash.hpp>
 
@@ -602,8 +602,8 @@ void EthStratumClient::connect_handler(const boost::system::error_code& ec)
 
     case EthStratumClient::ETHEREUMSTRATUM:
 
-        jReq["params"].append(ethminer_get_buildinfo()->project_name_with_version);
-        jReq["params"].append("EthereumStratum/1.0.0");
+        jReq["params"].append(teominer_get_buildinfo()->project_name_with_version);
+        jReq["params"].append("TEOminerStratum/1.0.0");
 
         break;
     }
@@ -720,7 +720,7 @@ void EthStratumClient::processResponse(Json::Value& responseObject)
         (_isNotification && (responseObject["params"].empty() && responseObject["result"].empty())))
     {
         cwarn << "Pool sent an invalid jsonrpc message...";
-        cwarn << "Do not blame ethminer for this. Ask pool devs to honor http://www.jsonrpc.org/ "
+        cwarn << "Do not blame teominer for this. Ask pool devs to honor http://www.jsonrpc.org/ "
                  "specifications ";
         cwarn << "Disconnecting...";
         m_io_service.post(m_io_strand.wrap(boost::bind(&EthStratumClient::disconnect, this)));
@@ -1214,7 +1214,7 @@ void EthStratumClient::processResponse(Json::Value& responseObject)
         else if (_method == "client.get_version")
         {
             jReq["id"] = toString(_id);
-            jReq["result"] = ethminer_get_buildinfo()->project_name_with_version;
+            jReq["result"] = teominer_get_buildinfo()->project_name_with_version;
 
             if (_rpcVer == 1)
             {

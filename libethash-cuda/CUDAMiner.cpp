@@ -473,6 +473,12 @@ void CUDAMiner::search(
                 m_new_work.store(false, std::memory_order_relaxed);
                 done = true;
                 stop = true;
+
+                cudalog << "shouldStop(): "
+                        << std::chrono::duration_cast<std::chrono::milliseconds>(
+                               std::chrono::steady_clock::now() - workSwitchStart)
+                               .count()
+                        << " ms.";
             }
 
             // See if we got solutions in this batch

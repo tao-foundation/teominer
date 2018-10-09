@@ -96,11 +96,25 @@ sudo apt-get install mesa-common-dev
     sudo make install
     ```
 
+6. When downloaded source code based builds.
+
+   You can git clone the Hunter and cmake build components by manually and continue build with step ##2.##
+   
+   ```shell
+   cd cmake ; rm -r cable 
+   git clone https://github.com/ethereum/cable 
+   cd Hunter ; rm -f disabled_mode 
+   git clone https://github.com/hunter-packages/disabled-mode 
+   ```
+
+   and goto step 2.
+   
+
 ### Windows-specific script
 
 Complete sample Windows batch file - **adapt it to your system**. Assumes that:
 
-* it's placed one folder up from the ethminer source folder
+* it's placed one folder up from the teominer source folder
 * you have CMake installed
 * you have Perl installed
 
@@ -115,8 +129,8 @@ rem add Perl in PATH; it's needed for OpenSSL build
 set "PERL_PATH=C:\Perl\perl\bin"
 set "PATH=%PERL_PATH%;%PATH%"
 
-rem switch to ethminer's source folder
-cd "%~dp0\ethminer\"
+rem switch to teominer's source folder
+cd "%~dp0\teominer\"
 
 if not exist "build\" mkdir "build\"
 

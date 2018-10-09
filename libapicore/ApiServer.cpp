@@ -1,6 +1,6 @@
 #include "ApiServer.h"
 
-#include <ethminer/buildinfo.h>
+#include <teominer/buildinfo.h>
 
 
 /* helper functions getting values from a JSON request */
@@ -812,7 +812,7 @@ Json::Value ApiConnection::getMinerStat1()
 
     Json::Value jRes;
 
-    jRes[0] = ethminer_get_buildinfo()->project_name_with_version;  // miner version.
+    jRes[0] = teominer_get_buildinfo()->project_name_with_version;  // miner version.
     jRes[1] = toString(runningTime.count());                        // running time, in minutes.
     jRes[2] = totalMhEth.str();  // total ETH hashrate in MH/s, number of ETH shares, number of ETH
                                  // rejected shares.
@@ -848,7 +848,7 @@ Json::Value ApiConnection::getMinerStatHR()
     Json::Value ispaused;
     ostringstream poolAddresses;
 
-    version << ethminer_get_buildinfo()->project_name_with_version;
+    version << teominer_get_buildinfo()->project_name_with_version;
     runtime << toString(runningTime.count());
     poolAddresses << m_farm.get_pool_addresses();
 

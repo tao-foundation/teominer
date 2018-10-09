@@ -7,9 +7,10 @@ set(SOURCES
 )
 
 include_directories(BEFORE ..)
+include_directories(PRIVATE ../libethash/include)
 
 add_library(ethcore ${SOURCES})
-target_link_libraries(ethcore PUBLIC devcore ethash::ethash PRIVATE hwmon)
+target_link_libraries(ethcore PUBLIC devcore ethash PRIVATE hwmon)
 
 if(ETHASHCL)
 	target_link_libraries(ethcore PRIVATE ethash-cl)

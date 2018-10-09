@@ -16,7 +16,7 @@ where `scheme` can be any of:
 
 ## Secure socket comunications for stratum only
 
-Ethminer supports secure socket communications (where pool implements and offers it) to avoid the risk of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)
+teominer supports secure socket communications (where pool implements and offers it) to avoid the risk of a [man-in-the-middle attack](https://en.wikipedia.org/wiki/Man-in-the-middle_attack)
 To enable it simply replace tcp with either:
 
 * `tls` to enable secure socket communication
@@ -27,7 +27,7 @@ thus your connection scheme changes to `-P stratum+tls://[...]` or `-P stratum+t
 ## Only for version 0.16+ (older versions not affected)
 
 Stratum autodetection has been introduced to mitigate user's duty to guess/find which stratum flavour to apply (stratum or stratum1 or stratum2).
-If you want to let ethminer do the tests for you simply enter scheme as `stratum://` (note `+tcp` is missing) or `stratums://` for secure socket or `stratumss://` for secure socket **allowing only TLS 1.2** encryption.
+If you want to let teominer do the tests for you simply enter scheme as `stratum://` (note `+tcp` is missing) or `stratums://` for secure socket or `stratumss://` for secure socket **allowing only TLS 1.2** encryption.
 
 ## Common samples
 

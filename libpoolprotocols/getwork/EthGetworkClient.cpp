@@ -85,6 +85,7 @@ void EthGetworkClient::submitSolution(const Solution& solution)
                 if (m_onSolutionRejected)
                 {
                     m_onSolutionRejected(false);
+                    cwarn << "Solution Rejected to submit solution.";
                 }
             }
         }

@@ -30,8 +30,9 @@ endif()
 
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(..)
+include_directories(PRIVATE ../libethash/include)
 
 add_library(ethash-cl ${SOURCES})
-target_link_libraries(ethash-cl PUBLIC ethcore ethash::ethash)
+target_link_libraries(ethash-cl PUBLIC ethcore ethash)
 target_link_libraries(ethash-cl PRIVATE OpenCL::OpenCL)
 target_link_libraries(ethash-cl PRIVATE Boost::filesystem)

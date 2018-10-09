@@ -19,7 +19,7 @@ HunterGate(
     LOCAL
 )
 
-project(ethminer)
+project(teominer)
 set(PROJECT_VERSION 0.16.1)
 
 cable_set_build_type(DEFAULT Release CONFIGURATION_TYPES Release RelWithDebInfo)
@@ -58,8 +58,8 @@ find_package(jsoncpp CONFIG REQUIRED)
 hunter_add_package(libjson-rpc-cpp)
 find_package(libjson-rpc-cpp CONFIG REQUIRED)
 
-hunter_add_package(ethash)
-find_package(ethash CONFIG REQUIRED)
+# hunter_add_package(ethash)
+# find_package(ethash CONFIG REQUIRED)
 
 configureProject()
 
@@ -87,6 +87,7 @@ add_subdirectory(libdevcore)
 add_subdirectory(libethcore)
 add_subdirectory(libhwmon)
 add_subdirectory(libpoolprotocols)
+add_subdirectory(libethash)
 
 if (ETHASHCL)
 	add_subdirectory(libethash-cl)
@@ -101,7 +102,7 @@ if (APICORE)
 	add_subdirectory(libapicore)
 endif()
 
-add_subdirectory(ethminer)
+add_subdirectory(teominer)
 
 
 if(WIN32)
