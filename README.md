@@ -1,15 +1,23 @@
-# ethminer
+# teominer
 
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)](https://github.com/RichardLitt/standard-readme)
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)][Gitter]
-[![Releases](https://img.shields.io/github/downloads/ethereum-mining/ethminer/total.svg)][Releases]
+[![Releases](https://img.shields.io/github/downloads/tao-foundation/teominer/total.svg)][Releases]
 
-> Ethereum miner with OpenCL, CUDA and stratum support
+> TEO (Trust Eth ReORIGIN miner with OpenCL, CUDA and stratum support
 
-**Ethminer** is an Ethash GPU mining worker: with ethminer you can mine every coin which relies on an Ethash Proof of Work thus including Ethereum, Ethereum Classic, Metaverse, Musicoin, Ellaism, Pirl, Expanse and others. This is the actively maintained version of ethminer. It originates from [cpp-ethereum] project (where GPU mining has been discontinued) and builds on the improvements made in [Genoil's fork]. See [FAQ](#faq) for more details.
+**TEO** 
+
+is first phase of main blockchain of ##TAO## Blockchain Architecture.
+
+**TEOminer** is an TEthashV1 (Trust Ethash Version 1) GPU mining worker: with teominer you can mine every coin which relies on an TEthashV1 Proof of Work thus including TEO, and others. This is the actively maintained version of teominer. It originates from [ethminer] [cpp-ethereum] project (where GPU mining has been discontinued) and builds on the improvements made in [Genoil's fork]. See [FAQ](#faq) for more details.
+
+## We are hiring Developers and Maintainers
+
+If you are interested on this projects, anytime contact us. on issue tabs or gitter or telegram
 
 ## Features
 
+* Trust Ethash Version (TEthashV1) supports
 * OpenCL mining
 * Nvidia CUDA mining
 * realistic benchmarking against arbitrary epoch/DAG/blocknumber
@@ -17,7 +25,6 @@
 * stratum mining without proxy
 * OpenCL devices picking
 * farm failover (getwork + stratum)
-
 
 ## Table of Contents
 
@@ -34,28 +41,28 @@
 
 ## Install
 
-[![Releases](https://img.shields.io/github/downloads/ethereum-mining/ethminer/total.svg)][Releases]
+[![Releases](https://img.shields.io/github/downloads/tao-foundation/teominer/total.svg)][Releases]
 
 Standalone **executables** for _Linux_, _macOS_ and _Windows_ are provided in
 the [Releases] section.
 Download an archive for your operating system and unpack the content to a place
-accessible from command line. The ethminer is ready to go.
+accessible from command line. The teominer is ready to go.
 
 | Builds | Release | Date |
 | ------ | ------- | ---- |
-| Last   | [![GitHub release](https://img.shields.io/github/release/ethereum-mining/ethminer/all.svg)](https://github.com/ethereum-mining/ethminer/releases) | [![GitHub Release Date](https://img.shields.io/github/release-date-pre/ethereum-mining/ethminer.svg)](https://github.com/ethereum-mining/ethminer/releases) |
-| Stable | [![GitHub release](https://img.shields.io/github/release/ethereum-mining/ethminer.svg)](https://github.com/ethereum-mining/ethminer/releases) | [![GitHub Release Date](https://img.shields.io/github/release-date/ethereum-mining/ethminer.svg)](https://github.com/ethereum-mining/ethminer/releases) |
+| Last   | [![GitHub release](https://img.shields.io/github/release/tao-foundation/teominer/all.svg)](https://github.com/tao-foundation/teominer/releases) | [![GitHub Release Date](https://img.shields.io/github/release-date-pre/tao-foundation/teominer.svg)](https://github.com/tao-foundation/teominer/releases) |
+| Stable | [![GitHub release](https://img.shields.io/github/release/tao-foundation/teominer.svg)](https://github.com/tao-foundation/teominer/releases) | [![GitHub Release Date](https://img.shields.io/github/release-date/tao-foundation/teominer.svg)](https://github.com/tao-foundation/teominer/releases) |
 
 
 ## Usage
 
-The **ethminer** is a command line program. This means you launch it either
+The **teominer** is a command line program. This means you launch it either
 from a Windows command prompt or Linux console, or create shortcuts to
 predefined command lines using a Linux Bash script or Windows batch/cmd file.
 For a full list of available command, please run:
 
 ```sh
-ethminer --help
+teominer --help
 ```
 
 ### Examples connecting to pools
@@ -68,10 +75,10 @@ Check our [samples](docs/POOL_EXAMPLES_ETH.md) to see how to connect to differen
 
 | CI            | OS            | Status  | Development builds |
 | ------------- | ------------- | -----   | -----------------  |
-| [Travis CI]   | Linux, macOS  | [![Travis CI](https://img.shields.io/travis/ethereum-mining/ethminer.svg)][Travis CI]    | ✗ No build artifacts, [Amazon S3 is needed] for this |
-| [AppVeyor]    | Windows       | [![AppVeyor](https://img.shields.io/appveyor/ci/ethereum-mining/ethminer.svg)][AppVeyor] | ✓ Build artifacts available for all PRs and branches |
+| [Travis CI]   | Linux, macOS  | [![Travis CI](https://img.shields.io/travis/tao-foundation/teominer.svg)][Travis CI]    | ✗ No build artifacts, [Amazon S3 is needed] for this |
+| [AppVeyor]    | Windows       | [![AppVeyor](https://img.shields.io/appveyor/ci/tao-foundation/teominer.svg)][AppVeyor] | ✓ Build artifacts available for all PRs and branches |
 
-The AppVeyor system automatically builds a Windows .exe for every commit. The latest version is always available [on the landing page](https://ci.appveyor.com/project/ethereum-mining/ethminer) or you can [browse the history](https://ci.appveyor.com/project/ethereum-mining/ethminer/history) to access previous builds.
+The AppVeyor system automatically builds a Windows .exe for every commit. The latest version is always available [on the landing page](https://ci.appveyor.com/project/tao-foundation/teominer) or you can [browse the history](https://ci.appveyor.com/project/tao-foundation/teominer/history) to access previous builds.
 
 To download the .exe on a build under `JOB NAME` select `Configuration: Release`, choose `ARTIFACTS` then download the zip file.
 
@@ -81,9 +88,9 @@ See [docs/BUILD.md](docs/BUILD.md) for build/compilation details.
 
 ## Maintainers & Authors
 
-[![Gitter](https://img.shields.io/gitter/room/ethereum-mining/ethminer.svg)][Gitter]
+[![Gitter](https://img.shields.io/gitter/room/tao-foundation/teominer.svg)][Gitter]
 
-The list of current and past maintainers, authors and contributors to the ethminer project.
+The list of current and past maintainers, authors and contributors to the teominer project.
 Ordered alphabetically. [Contributors statistics since 2015-08-20].
 
 | Name                  | Contact                                                      |     |
@@ -100,9 +107,9 @@ Ordered alphabetically. [Contributors statistics since 2015-08-20].
 
 ## Contribute
 
-[![Gitter](https://img.shields.io/gitter/room/ethereum-mining/ethminer.svg)][Gitter]
+[![Gitter](https://img.shields.io/gitter/room/tao-foundation/teominer.svg)][Gitter]
 
-To meet the community, ask general questions and chat about ethminer join [the ethminer channel on Gitter][Gitter].
+To meet the community, ask general questions and chat about teominer join [the teominer channel on Gitter][Gitter].
 
 All bug reports, pull requests and code reviews are very much welcome.
 
@@ -143,13 +150,14 @@ The default parameters are fine in most scenario's (CUDA). For OpenCL it varies 
 
 [@davilizh](https://github.com/davilizh) made improvements to the CUDA kernel hashing process and added this flag to allow changing the number of tasks it runs in parallel. These improvements were optimised for GTX 1060 GPUs which saw a large increase in hashrate, GTX 1070 and GTX 1080/Ti GPUs saw some, but less, improvement. The default value is 4 (which does not need to be set with the flag) and in most cases this will provide the best performance.
 
-### What is ethminer's relationship with [Genoil's fork]?
+### What is teominer's relationship with [Genoil's fork]?
 
 [Genoil's fork] was the original source of this version, but as Genoil is no longer consistently maintaining that fork it became almost impossible for developers to get new code merged there. In the interests of progressing development without waiting for reviews this fork should be considered the active one and Genoil's as legacy code.
 
 ### Can I CPU Mine?
 
-No, use geth, the go program made for ethereum by ethereum.
+No, use rteo, the rust TEO client program made for TEO by tao-foundation.
+In near future, CPU mining will supported on this teominer.
 
 ### CUDA GPU order changes sometimes. What can I do?
 
@@ -164,11 +172,11 @@ This can be done with one of the 2 ways:
 
 * Linux:
     * Adapt the `/etc/environment` file and add a line `CUDA_DEVICE_ORDER=PCI_BUS_ID`
-    * Adapt your start script launching ethminer and add a line `export CUDA_DEVICE_ORDER=PCI_BUS_ID`
+    * Adapt your start script launching teominer and add a line `export CUDA_DEVICE_ORDER=PCI_BUS_ID`
 
 * Windows:
     * Adapt your environment using the control panel (just search `setting environment windows control panel` using your favorite search engine)
-    * Adapt your start (.bat) file launching ethminer and add a line `set CUDA_DEVICE_ORDER=PCI_BUS_ID` or `setx CUDA_DEVICE_ORDER PCI_BUS_ID`. For more info about `set` see [here](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1), for more info about `setx` see [here](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx)
+    * Adapt your start (.bat) file launching teominer and add a line `set CUDA_DEVICE_ORDER=PCI_BUS_ID` or `setx CUDA_DEVICE_ORDER PCI_BUS_ID`. For more info about `set` see [here](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/set_1), for more info about `setx` see [here](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/setx)
 
 10. Insufficient CUDA driver
 
@@ -180,10 +188,10 @@ This can be done with one of the 2 ways:
 
 
 [Amazon S3 is needed]: https://docs.travis-ci.com/user/uploading-artifacts/
-[AppVeyor]: https://ci.appveyor.com/project/ethereum-mining/ethminer
+[AppVeyor]: https://ci.appveyor.com/project/tao-foundation/teominer
 [cpp-ethereum]: https://github.com/ethereum/cpp-ethereum
-[Contributors statistics since 2015-08-20]: https://github.com/ethereum-mining/ethminer/graphs/contributors?from=2015-08-20
+[Contributors statistics since 2015-08-20]: https://github.com/tao-foundation/teominer/graphs/contributors?from=2015-08-20
 [Genoil's fork]: https://github.com/Genoil/cpp-ethereum
-[Gitter]: https://gitter.im/ethereum-mining/ethminer
-[Releases]: https://github.com/ethereum-mining/ethminer/releases
-[Travis CI]: https://travis-ci.org/ethereum-mining/ethminer
+[Gitter]: https://gitter.im/tao-foundation/teominer
+[Releases]: https://github.com/tao-foundation/teominer/releases
+[Travis CI]: https://travis-ci.org/tao-foundation/teominer
