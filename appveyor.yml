@@ -1,0 +1,50 @@
+version: "{build}"
+branches:
+  only:
+    - master
+    - /v\d+\..+/
+    - /release.*/
+    - appveyor
+    - hunter
+clone_depth: 100
+os: Visual Studio 2017
+configuration:
+  - Release
+environment:
+  HUNTER_CACHE_TOKEN:
+    secure: VnpF1MH5MEFvUI5MiMMMFlmbDdst+bfom5ZFVgalYPp/SYDhbejjXJm9Dla/IgpC
+
+# Download CUDA Windows installer (local) and extract /compiler/* to /CUDA/vX.0/ zip archive.
+install: |
+  git submodule update --init --recursive
+  appveyor DownloadFile https://github.com/ethereum/cpp-dependencies/releases/download/cache/CUDA-v9.0-WindowsServer2012.zip
+  7z x CUDA-v9.0-WindowsServer2012.zip -oC:\
+  set PATH=C:\Python36-x64;C:\Python36-x64\Scripts;%PATH%;C:\CUDA\v9.0\bin
+  pip install requests gitpython
+  nvcc -V
+
+build_script:
+  - cmake -G "Visual Studio 15 2017 Win64" -H. -Bbuild -T v140 -DETHASHCUDA=ON -DAPICORE=ON -DHUNTER_JOBS_NUMBER=%NUMBER_OF_PROCESSORS%
+  - cmake --build build --config %CONFIGURATION% --target package
+  - ps: |
+      . build/ethminer/buildinfo.ps1
+      mv build/ethminer.zip build/$env:project_name-$env:project_version-$env:system_name-$env:system_processor.zip
+
+artifacts:
+  - path: build/ethminer-*.zip
+    name: ethminer
+
+deploy:
+  # Create GitHub release, also set the release name and description.
+  provider: GitHub
+  tag: $(appveyor_repo_tag_name)
+  release: $(project_name) $(project_version)
+  description: ''
+  force_update: true  # Force update in case Travis CI created the release before.
+  prerelease: $(project_version_is_prerelease)
+  draft: false
+  artifact: ethminer
+  auth_token:
+    secure: uDRcvbW+9GIyKlZ9guJfWOQ6jg0An6eULg6mEkYgdKn/GVNpYSKvO5oHxP0U8a+e
+  on:
+    appveyor_repo_tag: true
