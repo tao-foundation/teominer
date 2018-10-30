@@ -41,13 +41,14 @@ FNV prime	FNV offset basis
 2166136261 = 0x811c9dc5
 */
 
-#define __TETHASHV1__
-#undef __ETHASH__
-
 
 #if (defined(__Tahiti__) || defined(__Pitcairn__) || defined(__Capeverde__) || defined(__Oland__) || defined(__Hainan__))
 #define LEGACY
 #endif
+
+#define __TETHASHV1__
+#undef __ETHASH__
+
 
 #if defined(cl_amd_media_ops)
 #pragma OPENCL EXTENSION cl_amd_media_ops : enable
@@ -69,15 +70,9 @@ uint amd_bitalign(uint src0, uint src1, uint src2)
 #define FNV_PRIME 0x01000193U
 #define FNV_OFFSET_BASIS  0x811c9dc5U
 
-/*
-#if defined(__ETHASH__)
-#define fnv(x, y)        ((x) * FNV_PRIME ^ (y))
-#define fnv_reduce(v)    fnv(fnv(fnv(v.x, v.y), v.z), v.w)
-#else  */  // default __TETHASHV1__ 
+// default __TETHASHV1__ 
 #define fnv1a(x, y)         ((((FNV_OFFSET_BASIS^(x))*FNV_PRIME) ^ (y)) * FNV_PRIME)
 #define fnv1a_reduce(v) fnv1a(fnv1a(fnv1a(v.x, v.y), v.z), v.w)
-// #endif
-
 
 static __constant uint2 const Keccak_f1600_RC[24] = {
     (uint2)(0x00000001, 0x00000000),
@@ -479,6 +474,7 @@ __kernel void GenerateDAG(uint start, __global const uint16 *_Cache, __global ui
                 DAGNode.dqwords[x] ^= (FNV_OFFSET_BASIS);
                 DAGNode.dqwords[x] *= (uint4)(FNV_PRIME);
                 DAGNode.dqwords[x] ^= ParentNode->dqwords[x];
+                DAGNode.dqwords[x] *= (uint4)(FNV_PRIME);
             }
         }
     }
