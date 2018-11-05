@@ -9,7 +9,16 @@ set(EXECUTABLE teominer)
 
 file(GLOB HEADERS "*.h")
 
-add_executable(${EXECUTABLE} ${SRC_LIST} ${HEADERS})
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+ set(RESOURCE_FILES "teominer.rc")
+# set(CMAKE_RC_COMPILER_INIT windres)
+# ENABLE_LANGUAGE(RC)
+# SET(CMAKE_RC_COMPILE_OBJECT
+# "<CMAKE_RC_COMPILER> <FLAGS> -O coff <DEFINES> -i <SOURCE> -o <OBJECT>")	
+ add_executable(${EXECUTABLE} ${SRC_LIST} ${HEADERS} ${RESOURCE_FILES})
+else()
+	add_executable(${EXECUTABLE} ${SRC_LIST} ${HEADERS})
+endif()
 
 hunter_add_package(CLI11)
 find_package(CLI11 CONFIG REQUIRED)
